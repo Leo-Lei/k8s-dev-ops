@@ -1,0 +1,10 @@
+apps:
+     - name: celltower
+       git_repo: git@192.168.4.70:oi-zone/celltower.git
+     - name: app-config
+       git_repo: git@192.168.4.70:oi-zone/celltower.git
+
+
+docker-registry: 192.168.5.103:5000
+root_dir:
+
