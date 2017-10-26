@@ -17,6 +17,8 @@ unzip ${ROOT_DIR}.bak/k8s-dev-ops.zip -d ${ROOT_DIR}.tmp
 cp -r ${ROOT_DIR}.tmp/k8s-dev-ops-master/* ${ROOT_DIR}
 rm -rf ${ROOT_DIR}.tmp
 
+chmod 744 ${ROOT_DIR}/*.py
+
 GRADLE_HOME=/opt/gradle
 
 
