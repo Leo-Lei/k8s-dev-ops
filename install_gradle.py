@@ -14,6 +14,8 @@ def run():
     os.system('rm -rf {0}'.format(tmp_dir))
     os.system('mkdir -p {0}'.format(tmp_dir))
     os.system('mkdir -p {0}/gradle'.format(tmp_dir))
+    os.system('rm -rf {0}'.format(gradle_home))
+    os.system('mkdir -p {0}'.format(gradle_home))
     print 'start to download gradle'
     os.system('wget https://downloads.gradle.org/distributions/gradle-{0}-bin.zip -O {1}/gradle.zip'.format(gradle_version,
                                                                                                       tmp_dir))
