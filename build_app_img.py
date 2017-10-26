@@ -1,20 +1,13 @@
 #! /usr/bin/python
 # -*- coding: utf-8 -*-
 
-import sys
 import os
 import app_config
 import datetime
 import yaml
 
 
-def run():
-    if(len(sys.argv)) > 1:
-        hostname = sys.argv[1]
-        os.system('hostnamectl set-hostname {0}'.format(hostname))
-
-
-def build_img(app_name, env):
+def run(app_name, env):
     cfg = app_config.PiscesConfig.get_instance()
     root_dir = cfg.get_root_dir()
     app = cfg.get_app(app_name)
@@ -34,8 +27,14 @@ def build_img(app_name, env):
     metadata = {'name': app_name, 'latest_version': now_str}
     yaml.dump(metadata, stream)
 
+    # 构建docker镜像
     build_cmd = 'docker build -t {0}/{1}:{2} {3}dockerfile/{1}'.format(docker_registry_url, app_name, now_str, root_dir)
     os.system(build_cmd)
+
+    # 将镜像push到docker仓库
+    os.system('docker tag {0}/{1}:{2} {0}/{1}:latest'.format(docker_registry_url,app_name,now_str))
+    os.system('docker push {0}/{1}:{2}'.format(docker_registry_url, app_name, now_str))
+    os.system('docker push {0}/{1}:latest'.format(docker_registry_url, app_name))
 
 
 if __name__ == '__main__':

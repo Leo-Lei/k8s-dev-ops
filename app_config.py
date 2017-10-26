@@ -9,8 +9,8 @@ class PiscesConfig(object):
         cfg = yaml.load(f)
 
         # self.mysql = PiscesConfig.Mysql(cfg['mysql'])
-        # self.dockerfile = PiscesConfig.Dockerfile(cfg['dockerfile'])
-        self.docker_registry = cfg['docker-registry']
+        # self.dockerfile = PiscesConfig.Dockerfile.sample(cfg['dockerfile'])
+        self.docker_registry = cfg['docker_registry']
         self.root_dir = cfg['root_dir']
         # self.rds_mysql_sync = PiscesConfig.RdsMysqlSync(cfg['rds-mysql-sync'])
 
@@ -124,7 +124,7 @@ class PiscesConfig(object):
 
     class DockerRegistry:
         def __init__(self, cfg):
-            self.docker_registry = cfg['docker-registry']
+            self.docker_registry = cfg['docker_registry']
 
         def get_docker_registry(self):
             """

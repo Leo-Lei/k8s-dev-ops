@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: k8s-dubbo-consumer
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: k8s-dubbo-consumer
+  template:
+    metadata:
+      labels:
+        app: k8s-dubbo-consumer
+    spec:
+      containers:
+      - name: k8s-dubbo-consumer
+        image: 192.168.5.103:5000/qibei/k8s-dubbo-consumer
+        ports:
+        - containerPort: 20881
