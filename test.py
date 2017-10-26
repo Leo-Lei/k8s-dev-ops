@@ -8,6 +8,12 @@ import datetime
 import yaml
 
 
+def run001():
+    print 'start'
+    os.system('wget https://downloads.gradle.org/distributions/gradle-4.1-bin.zip -O gradle.zip')
+    print 'end'
+
+
 def run(app_name, env):
     cfg = app_config.PiscesConfig.get_instance()
     app = cfg.get_app(app_name)
@@ -59,4 +65,5 @@ def build_img(app_name, env):
 
 
 if __name__ == '__main__':
-    run('celltower','develop')
+    # run('celltower','develop')
+    run001()
