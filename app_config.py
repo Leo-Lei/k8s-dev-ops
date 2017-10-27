@@ -1,5 +1,6 @@
 import yaml
-
+import utils.io
+import os
 
 class PiscesConfig(object):
     __instance = None
@@ -12,6 +13,7 @@ class PiscesConfig(object):
         # self.dockerfile = PiscesConfig.Dockerfile.sample(cfg['dockerfile'])
         self.docker_registry = cfg['docker_registry']
         self.root_dir = cfg['root_dir']
+        self.workspace_dir = cfg['workspace_dir']
         # self.rds_mysql_sync = PiscesConfig.RdsMysqlSync(cfg['rds-mysql-sync'])
 
         apps = {}
@@ -24,11 +26,11 @@ class PiscesConfig(object):
         # self.logs_dir = cfg['logs_dir']
         # self.data_dir = cfg['data_dir']
 
-    def get_mysql(self):
-        """
-        :rtype: PiscesConfig.Mysql
-        """
-        return self.mysql
+    # def get_mysql(self):
+    #     """
+    #     :rtype: PiscesConfig.Mysql
+    #     """
+    #     return self.mysql
 
     def get_docker_registry(self):
         """
@@ -42,17 +44,28 @@ class PiscesConfig(object):
         """
         return self.root_dir
 
-    def get_rds_mysql_sync(self):
+    def get_workspace_dir(self):
         """
-        :rtype: PiscesConfig.RdsMysqlSync
+        :rtype: str
         """
-        return self.rds_mysql_sync
+        if self.workspace_dir == '' or self.workspace_dir is None:
+            workspace_dir = os.path.join(utils.io.get_user_home_dir(), 'k8s-dev-ops.workspace')
+            os.system('mkdir -p ' + workspace_dir)
+            return workspace_dir
+        else:
+            return self.workspace_dir
 
-    def get_dockerfile(self):
-        """
-        :rtype: PiscesConfig.Dockerfile
-        """
-        return self.dockerfile
+    # def get_rds_mysql_sync(self):
+    #     """
+    #     :rtype: PiscesConfig.RdsMysqlSync
+    #     """
+    #     return self.rds_mysql_sync
+
+    # def get_dockerfile(self):
+    #     """
+    #     :rtype: PiscesConfig.Dockerfile
+    #     """
+    #     return self.dockerfile
 
     def get_app(self, app):
         """
@@ -241,8 +254,7 @@ class PiscesConfig(object):
         def __init__(self, app):
             self.name = app['name']
             self.git_repo = app['git_repo']
-            # self.dubbo_port = app['dubbo_port']
-            # self.http_port = app['http_port']
+            self.resources = app['resources']
 
         def get_name(self):
             """
@@ -255,6 +267,12 @@ class PiscesConfig(object):
             :rtype: str
             """
             return self.git_repo
+
+        def get_resources(self):
+            """
+            :rtype: list
+            """
+            return self.resources
 
         # def get_http_port(self):
         #     """

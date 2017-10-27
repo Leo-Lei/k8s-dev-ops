@@ -1,10 +1,16 @@
 apps:
      - name: celltower
        git_repo: git@192.168.4.70:oi-zone/celltower.git
+       resources:
+           - name: deployment
      - name: app-config
-       git_repo: git@192.168.4.70:oi-zone/celltower.git
-
+       git_repo: git@192.168.4.70:oi-zone/app-config.git
+       node_port: 8744
+       resources:
+           - name: deployment
+           - name: service
 
 docker_registry: 192.168.5.103:5000
-root_dir:
-
+root_dir: /Users/leiwei/github/k8s-dev-ops
+# workspace_dir默认为$HOME
+workspace_dir:

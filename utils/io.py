@@ -30,3 +30,11 @@ def replace_str_in_file(file_path, strdict, new_file_path=''):
         write_str_2_file(s, file_path)
     else:
         write_str_2_file(s, new_file_path)
+
+
+def get_user_home_dir():
+    return os.environ['HOME']
+
+
+def join_path(path, *paths):
+    return os.path.join(path, *paths)

@@ -63,7 +63,24 @@ def build_img(app_name, env):
     build_cmd = 'docker build -t {0}/{1}:{2} /opt/k8s-dev-ops/dockerfile/{1}'.format(docker_registry_url, app_name,now_str)
     os.system(build_cmd)
 
+def test002():
+    s = os.path.join(os.environ['HOME'],'tmp')
+    print s
+    # print os.environ['HOME']
+    # print os.path.expandvars('$HOME')
+    # print os.path.expanduser('~')
+
+def test003():
+    f = open('workspace/celltower.yaml','w')
+    aproject = {'name': 'Silenthand Olleander',
+                'race': 'Human',
+                'traits': ['ONE_HAND', 'ONE_EYE']
+                }
+
+    yaml.dump(aproject,f)
+    f.close()
+
 
 if __name__ == '__main__':
     # run('celltower','develop')
-    run001()
+    test003()
