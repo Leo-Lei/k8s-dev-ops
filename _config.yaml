@@ -3,12 +3,12 @@ apps:
        git_repo: git@192.168.4.70:oi-zone/celltower.git
        resources:
            - name: deployment
-     - name: app-config
-       git_repo: git@192.168.4.70:oi-zone/app-config.git
-       node_port: 8744
+     - name: api-gateway
+       git_repo: git@192.168.4.70:oi-zone/api-gateway.git
        resources:
            - name: deployment
            - name: service
+             node_port: 8744
 
 docker_registry: 192.168.5.103:5000
 root_dir: /Users/leiwei/github/k8s-dev-ops

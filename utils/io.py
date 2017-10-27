@@ -25,7 +25,7 @@ def write_str_2_file(s, file_path):
 def replace_str_in_file(file_path, strdict, new_file_path=''):
     s = read_file_2_str(file_path)
     for (old, new) in strdict.items():
-        s = s.replace(old, new)
+        s = s.replace(str(old), str(new))
     if new_file_path == '':
         write_str_2_file(s, file_path)
     else:

@@ -56,8 +56,9 @@ def first_time_publish(app_name, env='develop'):
                                          utils.io.join_path(workspace_dir, app_name, 'k8s',
                                                             app_name + '-deployment.yaml'))
         if resource['name'] == 'service':
+            node_port = resource['node_port']
             utils.io.replace_str_in_file(utils.io.join_path(root_dir, 'k8s', 'service.yaml.sample'),
-                                         {'${APP_NAME}': app_name, '${DOCKER_REGISTRY}': docker_registry},
+                                         {'${APP_NAME}': app_name, '${DOCKER_REGISTRY}': docker_registry, '${NODE_PORT}': node_port},
                                          utils.io.join_path(workspace_dir, app_name, 'k8s', app_name + '-service.yaml'))
 
     # os.system('kubectl create -f {0}/{1}/k8s/'.format(workspace_dir, app_name))

@@ -81,6 +81,13 @@ def test003():
     f.close()
 
 
+
+def test004():
+    foo = 8080
+    bar = str(foo)
+    print bar
+
+
 if __name__ == '__main__':
     # run('celltower','develop')
-    test003()
+    test004()
