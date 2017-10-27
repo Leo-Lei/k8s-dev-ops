@@ -16,4 +16,4 @@ spec:
       - name: ${APP_NAME}
         image: ${DOCKER_REGISTRY}/qibei/${APP_NAME}
         ports:
-        - containerPort: 20881
+        - containerPort: 20880
