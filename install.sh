@@ -1,5 +1,10 @@
 #! /usr/bin/bash
 
+##################################################
+#           使用以下命令来一键安装:
+# curl -s "https://raw.githubusercontent.com/Leo-Lei/k8s-dev-ops/master/install.sh" | bash
+##################################################
+
 ROOT_DIR=/opt/k8s-dev-ops
 mkdir -p ${ROOT_DIR}.bak
 mkdir -p ${ROOT_DIR}.tmp
