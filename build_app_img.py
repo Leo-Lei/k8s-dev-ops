@@ -15,6 +15,7 @@ def run():
     if (len(sys.argv)) > 2:
         env = sys.argv[2]
 
+    init(app_name)
     build(app_name, env)
 
 
@@ -80,6 +81,13 @@ def build(app_name, env='develop'):
     os.system('docker tag {0} {1}'.format(image_name, latest_image_name))
     os.system('docker push {0}'.format(image_name))
     os.system('docker push {0}'.format(latest_image_name))
+
+
+def init(app_name):
+    cfg = app_config.PiscesConfig.get_instance()
+    workspace_dir = cfg.get_workspace_dir()
+    source_dir = utils.io.join_path(workspace_dir, app_name, 'source')
+    os.system('rm -rf {0}'.format(source_dir))
 
 
 if __name__ == '__main__':

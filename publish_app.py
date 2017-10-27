@@ -86,7 +86,7 @@ def update(app_name, env='develop'):
 
     metadata_file_path = utils.io.join_path(workspace_dir, app_name, app_name + '.yaml')
 
-    f = open(metadata_file_path, 'w')
+    f = open(metadata_file_path)
     metadata = yaml.load(f)
     latest_version = metadata['latest_version']
     f.close()
