@@ -12,8 +12,15 @@ spec:
       labels:
         app: ${APP_NAME}
     spec:
+      volumes:
+      - name: logs-volume
+        hostPath:
+          path: /opt/logs/${APP_NAME}
       containers:
       - name: ${APP_NAME}
         image: ${DOCKER_REGISTRY}/qibei/${APP_NAME}
+        volumeMounts:
+          - mountPath: /opt/logs
+            name: logs-volume
         ports:
         - containerPort: 20880

@@ -70,7 +70,7 @@ def build(app_name, env='develop'):
                                  utils.io.join_path(dockerfile_dir, "Dockerfile"))
 
     utils.io.replace_str_in_file(utils.io.join_path(root_dir, 'dockerfile', 'app', 'app.sh.sample'),
-                                 {'${APP_NAME}': app_name},
+                                 {'${APP_NAME}': app_name,'${ENV}': env},
                                  utils.io.join_path(dockerfile_dir, "app.sh"))
 
     utils.io.copyfile(utils.io.join_path(workspace_dir,app_name,'source','build','libs',app_name + '.jar'),
