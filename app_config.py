@@ -2,6 +2,7 @@ import yaml
 import utils.io
 import os
 
+
 class PiscesConfig(object):
     __instance = None
 
