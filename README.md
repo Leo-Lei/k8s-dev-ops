@@ -6,7 +6,7 @@
 ```bash
 curl -s "https://raw.githubusercontent.com/Leo-Lei/k8s-dev-ops/master/install.sh" | bash
 ```
-执行该命令会从github上下载项目到本地某个目录。
+执行该命令会从github上下载项目到本地某个目录。默认是`/opt/k8s-dev-ops`目录。
  
 # 如何使用
 * _config.yaml: 工程的配置文件
