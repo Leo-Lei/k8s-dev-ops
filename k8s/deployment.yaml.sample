@@ -19,6 +19,7 @@ spec:
       containers:
       - name: ${APP_NAME}
         image: ${DOCKER_REGISTRY}/qibei/${APP_NAME}
+        imagePullPolicy: IfNotPresent
         volumeMounts:
           - mountPath: /opt/logs
             name: logs-volume
